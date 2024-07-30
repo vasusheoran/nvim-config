@@ -65,6 +65,8 @@ vim.opt.rtp:prepend(lazypath)
 require("remap")
 require("set")
 require('lazy').setup({
+  require("kickstart.plugins.debug"),
+  require("kickstart.plugins.autoformat"),
   { import = 'custom.plugins' }
 })
 local on_attach = function(_, bufnr)
@@ -148,7 +150,17 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  gopls = {},
+  gopls = {
+    env = {
+      GOPACKAGESDRIVER = './tools/scripts/gopackagesdriver/gopackagesdriver.sh'
+    },
+    directoryFilters = {
+      "-bazel-bin",
+      "-bazel-out",
+      "-bazel-testlogs",
+      "-bazel-mypkg",
+    },
+  },
   templ = { filetypes = { 'templ' } },
   -- pyright = {},
   -- rust_analyzer = {},

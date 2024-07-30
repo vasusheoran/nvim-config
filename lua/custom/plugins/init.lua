@@ -8,4 +8,7 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
   { 'numToStr/Comment.nvim', opts = {} },
+  -- 'google/vim-maktaba',
+  -- 'bazelbuild/vim-bazel',
+  -- 'hedronvision/bazel-compile-commands-extractor'
 }
